@@ -1,0 +1,34 @@
+
+
+<p>product works!</p>
+
+<div *ngIf="affiche==true">
+<table class ="table">
+    <tr>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Category</td>
+        <td>like</td>
+
+
+    </tr>
+    <tr *ngFor="let p of products">
+        <td>{{p.name}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.category.type}}</td>
+        <td>{{p.quantity}}</td>
+        <td>{{p.like}}</td>
+        <td><button (click)="like(p)">like</button>   </td>
+        <td><button [disabled]="p.quantity==0"(click)="buy(p)">buy</button>   </td>
+        <td *ngIf="p.quantity==0">quantite epuisé</td>
+       
+        <td *ngIf="p.like>=8">meilleur prod </td>
+        
+    </tr>
+
+</table>
+</div>
+<div *ngIf="!affiche">
+    <p>pas de produit</p>
+</div>

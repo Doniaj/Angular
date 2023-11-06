@@ -1,0 +1,45 @@
+<p>form-user works!</p>
+<form #f="ngForm" (ngSubmit)="add(f)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input type="email" class="form-control" required minlength="3" name="firstName" [(ngModel)]="user.firstName" #firstName = "ngModel" placeholder="Hedil">
+      <div class ="alert alert-danger" *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">
+      <div *ngIf="firstName.errors!['required']"> FirstName is required!</div>
+     <div *ngIf="firstName.errors!['minlength']">FirstName must be at least 3 characters!</div>
+     </div>
+      Touched :{{firstName.touched}}<br>
+      Untouched: {{firstName.untouched}}<br>
+     Pristine :{{firstName.pristine}}<br>
+     Dirty : {{firstName.dirty}}<br>
+     Valid : {{firstName.valid}}<br>
+     Invalid ; {{firstName.invalid}}<br>
+     Errors :{{firstName.errors|json}}
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Last Name</label>
+      <input type="text" class="form-control" name="Maaoui" id="exampleInputPassword1" [(ngModel)]="user.lastName" >
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Birth Date</label>
+        <input type="date" class="form-control" id="exampleInputPassword1" [(ngModel)]="user.birthDate" placeholder="27-04-2000">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Email adress</label>
+        <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="user.email"  placeholder="hedil.maaoui@esprit.tn">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" [(ngModel)]="user.password" id="exampleInputPassword1 " ngModel >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Profession</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="user.profession" name="Profession">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Customer Category </label>
+        <input type="password" class="form-control" name="Customer" id="exampleInputPassword1"  [(ngModel)]="user.accountCategory" placeholder="Customer" readonly>
+      </div>
+      <div class = "mb-3">
+    <button type ="submit" value="add" [disabled]="f.invalid">Add </button>
+    </div>
+  </form>
